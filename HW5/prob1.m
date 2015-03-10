@@ -34,7 +34,6 @@ T3 = 1700+273.15%Convert C to K
 %T4 = T1*((T2*V3^y/V2))/((T3*V2^y/V3))
 %T4 = T1*(T2*(T3V2/T2)^y/V2)/(T3*V2^y/(T3V2/T2))
 %T4 = T1*((T2*V2)^(1-y)*T3^y)/(T2*V2^(y-1))
-%FIX ALGERBRA
 %T4 = T1*((T2/T3)^(-y)
 T4 = T1*realpow((T2/T3),(-y))
 Efficiency = 1-(1/y)*((T4-T1)/(T3-T2))
