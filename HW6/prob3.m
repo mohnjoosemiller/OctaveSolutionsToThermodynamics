@@ -29,7 +29,8 @@ mt = V/Vs
 %Q = molevap*(Hvap-Hliq)
 molevap = .6*mt*Vliq/(Vvap-Vliq)
 Q = molevap*(Hvap-Hliq)
-
+% Yields ->
+% ଀Q =  5159.1
 
 
 
