@@ -11,6 +11,7 @@ P = 1919.4%Kpa
 %From Table B1
 Tc = 425.1
 Pc = 37.96%Bar
+Pcbar = Pc
 Pc = Pc*100%convert to kPa
 w = .200
 Zc = .274
@@ -36,24 +37,39 @@ R = 8.314
 %Finding Sr
 int1 = interp1([.1,.2],[-.111,-.239],Pr,"extrap")
 int2 = interp1([.2,.4],[-.199,-.463],Pr,"extrap")
-H0 = interp1([.85,.90],[int1,int2],Tr)
+S0 = interp1([.85,.90],[int1,int2],Tr)
 int3 = interp1([.1,.2],[-.183,-.400],Pr,"extrap")
 int4 = interp1([.2,.4],[-.301,-.744],Pr,"extrap")
-H1 = interp1([.85,.9],[int3,int4],Tr)
-Hr = H0*R*Tc + H1*R*Tc*w
-%Finding Hr
-int1 = interp1([.1,.2],[.9436,.8810],Pr,"extrap")
-int2 = interp1([.2,.4],[.9015,.7800],Pr,"extrap")
-S0 = interp1([.85,.90],[int1,int2],Tr)
-int3 = interp1([.1,.2],[-.0319,-.0715],Pr,"extrap")
-int4 = interp1([.2,.4],[-.0442,-.1118],Pr,"extrap")
 S1 = interp1([.85,.9],[int3,int4],Tr)
 Sr = S0*R + S1*R*w
-
-
-
-
-
+%Finding Hr
+int1 = interp1([.1,.2],[-.141,-.3],Pr,"extrap")
+int2 = interp1([.2,.4],[-.264,-.596],Pr,"extrap")
+H0 = interp1([.85,.90],[int1,int2],Tr)
+int3 = interp1([.1,.2],[-.182,-.401],Pr,"extrap")
+int4 = interp1([.2,.4],[-.308,-.751],Pr,"extrap")
+H1 = interp1([.85,.9],[int3,int4],Tr)
+Hr = H0*R*Tc + H1*R*w*Tc
+%Finding Hvap
+Hvap = R*ICPH(T0,T,1.935,36.95*10^-3,-11.402*10^-6,0) + Hr
+%finding Svap
+Svap = R*(ICPS(T0,T,1.935,36.95*10^-3,-11.402*10^-6,0) -log(P/P0)) + Sr
+%finding Vliq
+Vliq = Vc*Zc^((1-Tr)^(2/7))
+%Hliq = Hvap - dHvaporization
+Tn = 272.7
+dHvapn = R*Tn*((1.092*(log(37.96)-1.013))/(.93-(Tn/Tc)))
+dHvap = dHvapn*((1-Tr)/(1-(Tn/Tc)))^.38
+Hliq = Hvap - dHvap
+%similarly, Sliq = Svap-dHvap/T
+Sliq = Svap - dHvap/T
+%Yields ->
+%Vvap =  1066.6
+%Hvap =  6680.4
+%Svap =  0.37214
+%Vliq =  123.86
+%Hliq = -8614.8
+%Sliq = -40.966
 
 
 
