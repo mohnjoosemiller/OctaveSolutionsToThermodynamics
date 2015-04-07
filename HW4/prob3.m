@@ -23,7 +23,9 @@ y = R*((nCO2f*((5.457*T + .5*(1.045 * 10^-3)*T^2 - (-1.157*10^5)*T^-1)-(5.457*Ts
 %dHH2O = R*nH2Of*int((3.470 + (1.45 * 10^-3)*T + (.121*10^5)*T^-2), T, 298.15, T);
 %dHN2 = R*nN2f*int((3.28 + (.593 * 10^-3)*T + (.040*10^5)*T^-2), T, 298.15, T);
 %dHO2 = R*nO2f*int((3.639 + (.506 * 10^-3)*T + (-.227*10^5)*T^-2), T, 298.15, T);
-
+%Excess H ->>>>> FLAME >>>> Products
+%At some T Sum(Cp(T)*n*R) = sum(dH) ===== dHrxn
+%dHsurr = 0 = dHrxn + sum(dH)
 %y = dHCO2 + dHH2O + dHN2 + dHO2 + dHrxn;
 
 
