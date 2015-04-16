@@ -27,6 +27,9 @@ T2 = T1+dTans
 dS = Cp*log(T2/T1)-B*V*dP
 
 Wlost = Tsurr*dS
+%yields
+%dTans =  0.092637
+%Wlost =  0.57080
 
 
 

@@ -17,6 +17,11 @@ n = Wideal/Work
 Sg = dS
 Wlost = Tsurr*dS
 
+%yields
+%Wideal =  4349.8
+%n =  0.82252
+%Sg =  3.2012
+%Wlost =  938.45
 
 
 

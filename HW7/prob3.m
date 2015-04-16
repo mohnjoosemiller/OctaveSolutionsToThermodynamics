@@ -63,6 +63,11 @@ neff = WorkRate/Wideal
 SgBoil = nflow*(dSgas)+mflow*(S1200-S293)
 SgTurb = mflow*(Snew-S1200)
 %ANSWERS IN TERMS OF WATTS not KWs where applicable
+%WorkRate =   -1.3564e+05
+%Wideal =   -3.1429e+05
+%neff =  0.43158
+%SgBoil =  453.41
+%SgTurb =  156.00
 
 
 

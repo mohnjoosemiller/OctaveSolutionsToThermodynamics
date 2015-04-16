@@ -26,4 +26,5 @@ xVap = (H2-Hliq)/(Hvap-Hliq)
 S2 = Sliq + xVap*(Svap-Sliq)
 
 dS = S2-S1
-
+%yields
+%dS =  0.039055
