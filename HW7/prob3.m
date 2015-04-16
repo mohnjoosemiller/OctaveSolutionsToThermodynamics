@@ -45,14 +45,24 @@ Snew = SExliq+xnew*SEvap
 %Flow rates and Temps of gases
 Teng = 673.15
 Tengf = 187.96+10+273.15
+nflow = 125
+MW = .018
+Tsurr = 293.15
 
 dHgas = 8.314*ICPH(Teng, Tengf, 3.34, 1.12*10^-3,0,0)
-dS = 8.314*ICPS(Teng,Tengf,3.34,1.12*10^-3,0,0)
+dSgas = 8.314*ICPS(Teng,Tengf,3.34,1.12*10^-3,0,0)
 
+mflow = -(nflow*dHgas)/(H1200 - H293)
 
+WorkRate = mflow*(Hnew - H1200)
 
+Wideal = nflow*dHgas+mflow*(Hnew-H293)-Tsurr*(nflow*dSgas+mflow*(Snew-S293))
 
+neff = WorkRate/Wideal
 
+SgBoil = nflow*(dSgas)+mflow*(S1200-S293)
+SgTurb = mflow*(Snew-S1200)
+%ANSWERS IN TERMS OF WATTS not KWs where applicable
 
 
 
