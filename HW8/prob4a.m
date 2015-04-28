@@ -5,7 +5,7 @@
 TA = 305
 PA = 1.05
 PB = 7.5
-n = 8
+n = .8
 %Finding Cp based off of integrals... here done by hand (origianally done in EXCEL solver b/c I don't have the proper functions on this machine
 CpAir = 29.921
 WAir = CpAir*TA/n*((PB/PA)^(8.314/CpAir) - 1)
