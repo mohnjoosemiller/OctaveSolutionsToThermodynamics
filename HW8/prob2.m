@@ -43,14 +43,32 @@ Tpp = Tsat+dT
 Tinterm = (190-Tpp)/2 + Tpp%Tpp does not mean Twitch plays Pokemon in this scenario
 Tpreheat2 = Tinterm+5
 %Find value (interpolated) for H at Tpreheat2 = 130.38
-H
-
-
-
-
-
-
-
+Hpreheat2 = 548.0
+Hpp = Hliq20 + dHpump
+%Interpolating for values at 6500kPa and T=190C and Tpp
+HsatTpp = 526.6
+VsatTpp = 1.065
+PsatTpp = 234.9
+Hsat190 = 807.5
+Vsat190 = 1.142
+Psat190 = 1255.1
+%Changes in volume to find Betas around these temps using 10degC radii
+dVTpp = .019
+dV190 = .028
+BTpp = dVTpp/(VsatTpp*10*2)
+B190 = dV190/(Vsat190*10*2)
+HTpp = HsatTpp +VsatTpp*(1-BTpp*Tpp)*(Pb-PsatTpp)
+H190 = Hsat190 +VsatT190*(1-B190*(190+273.15))*(Pb-Psat190)
+masscond = (H190-HTpp)/(Hf1f-H1a)
+Hinterp = 2763.1
+Heater2 = Hb+.8*(Hinterp-Hb)
+mcond2 = ((HTpp-Hpp)-masscond*(H1a-Hpreheat2))/(Heater2-Hpreheat2)
+molfrac = (Sb-Sliq20)/(Svap20-Sliq20)
+predH = Hliq20+molfrac*(Hvap20-Hliq20)
+Hwe = Hb+.8*(predH-Hb)
+Wturb = W1+(1-masscond)*(Heater2-H1a)+(1-masscond-mcond2)*(Hwe-Heater2)
+Qprocess = Hb-H190
+nOverall = Wturb/Q
 
 
 
