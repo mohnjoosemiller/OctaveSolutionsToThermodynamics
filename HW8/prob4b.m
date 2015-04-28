@@ -5,15 +5,15 @@
 TA = 305
 PA = 1.05
 PB = 7.5
-n = 8
+n = .8
 %Finding Cp based off of integrals... here done by hand (origianally done in EXCEL solver b/c I don't have the proper functions on this machine
 CpAir = 29.921
 WAir = CpAir*TA/n*((PB/PA)^(8.314/CpAir) - 1)
 TB = TA + WAir/CpAir
 %Combustion of Methane: CH4+2*O2---->CO2+2H2O
-%Again solving for Molar amount using manual iteration (partially in excel) tested at 50,60,55,57,57.5,57.6, and found 57.64 to be a reasonable solution
-N=57.640
-Tc = 1000
+%Again solving for Molar amount using manual iteration (partially in excel) tested at 50,60,40,35,37.5(so lucky) and found 37.5 to be a reasonable solution
+N=37.5
+Tc = 1200
 dHrdc = -CpAir*N*(298-TB)+4.217*8.314*(298.15-300)%Cp value of methane is very close to that at 298, so we can use the val at 298
 molsprod = [1,2,.21*N-2,.79*N]
 Coeff = [5.457,3.47,3.639,3.28;1.045,1.45,.506,.593;-1.157,.121,-.227,.040]
