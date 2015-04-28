@@ -23,10 +23,15 @@ D = sum(Coeff(1,:)*molsprod)%substitute these values into a CpigH solver
 %^^above finds that 
 dHinc = 1.292*10^6
 dHrxn298 = -802625 %from prev. prob
-%w/ N = 57.64 we get a value that makes dHrdc+dHrxn298+dHinc approx. 0
-
-
-
+% N = 57.64 we get a value that makes dHrdc+dHrxn298+dHinc approx. 0
+%again finding Cps in excel
+Cpprod = 1849
+%From initial to final P
+PD = 1%bar
+PC = 7.5%bar
+shaftwork = (N+1)*Cpprod*Tc/n*((PD/PC)^(8.314/Cpprod) - 1)
+TD = TC+shaftwork/Cpprod
+Wnet = shaftwork+WAir*N
 
 
 
